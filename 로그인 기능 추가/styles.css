@@ -65,3 +65,22 @@ button:hover {
 .post p {
     color: #777;
 }
+
+.like-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.like-btn:hover {
+    background-color: #0056b3;
+}
+
+.like-count {
+    margin-left: 10px;
+    color: #555;
+}

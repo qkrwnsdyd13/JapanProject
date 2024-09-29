@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+</head>
+<body>
+    <form action="">
+        <h1>로그인</h1>
+        <div> email : <input type="email" id="signInEmail"></div>
+        <div> password : <input type="password" id="signInPassword"></div>
+        <button type="submit" id="signInButton">로그인 하기</button>
+        <button><a style="text-decoration:none; color: inherit;" href="signup.html" target="_self">회원가입 하러 하기</a></button>
+    </form>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+    
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKYZ2Oo53cg_jsyIy1ZnbP46Tl7LV-htE",
+            authDomain: "japanproject-55e02.firebaseapp.com",
+            projectId: "japanproject-55e02",
+            storageBucket: "japanproject-55e02.appspot.com",
+            messagingSenderId: "1041560229868",
+            appId: "1:1041560229868:web:128b84d044394b102612c9",
+            measurementId: "G-2VKFHN3P0K"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+
+
+        const auth = getAuth();
+
+            document.getElementById('signInButton').addEventListener('click', (event) => {
+            event.preventDefault()
+            const signInEmail = document.getElementById('signInEmail').value
+            const signInPassword = document.getElementById('signInPassword').value
+
+            signInWithEmailAndPassword(auth, signInEmail, signInPassword)
+                .then((userCredential) => {
+                    // Signed in 
+                    window.location.href = "http://127.0.0.1:5500/%EB%A1%9C%EA%B7%B8%EC%9D%B8/%EC%A2%8B%EC%95%84%EC%9A%94/index.html";
+                    const user = userCredential.user;
+                    // ...
+                })
+                    .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                });
+            })
+    </script>
+</body>
+</html>
